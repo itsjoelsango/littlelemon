@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-let keyFirstName = "first name key"
-let keyLastName = "last name kay"
-let keyEmail = "default email"
+let keyFirstName = "kFirstName"
+let keyLastName = "kLastName"
+let keyEmail = "kEmail"
+let kIsLoggedIn = "kIsLoggedIn"
 
 struct Onboarding: View {
     @State private var firstName = ""
@@ -37,6 +38,7 @@ struct Onboarding: View {
                             UserDefaults.standard.set(firstName, forKey: keyFirstName)
                             UserDefaults.standard.set(lastName, forKey: keyLastName)
                             UserDefaults.standard.set(email, forKey: keyEmail)
+                            UserDefaults.standard.set(isLoggedIn, forKey: kIsLoggedIn)
                             isLoggedIn = true
                         } else {
                             print("Invalid Email")
@@ -49,6 +51,11 @@ struct Onboarding: View {
             }
             .textFieldStyle(.roundedBorder)
             .padding()
+            .onAppear {
+                if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
+                    isLoggedIn = true
+                }
+            }
         }
     }
     
