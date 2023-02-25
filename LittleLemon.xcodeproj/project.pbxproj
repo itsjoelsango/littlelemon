@@ -11,6 +11,8 @@
 		285DB28C29A8D887008AE79E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 285DB28B29A8D887008AE79E /* Assets.xcassets */; };
 		285DB28F29A8D887008AE79E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 285DB28E29A8D887008AE79E /* Preview Assets.xcassets */; };
 		285DB29629AA1302008AE79E /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285DB29529AA1302008AE79E /* Onboarding.swift */; };
+		285DB29829AA6796008AE79E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285DB29729AA6796008AE79E /* Home.swift */; };
+		285DB29A29AA6865008AE79E /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285DB29929AA6865008AE79E /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		285DB28B29A8D887008AE79E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		285DB28E29A8D887008AE79E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		285DB29529AA1302008AE79E /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		285DB29729AA6796008AE79E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		285DB29929AA6865008AE79E /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +57,10 @@
 			children = (
 				285DB28729A8D885008AE79E /* Restaurant.swift */,
 				285DB29529AA1302008AE79E /* Onboarding.swift */,
+				285DB29729AA6796008AE79E /* Home.swift */,
 				285DB28B29A8D887008AE79E /* Assets.xcassets */,
 				285DB28D29A8D887008AE79E /* Preview Content */,
+				285DB29929AA6865008AE79E /* Menu.swift */,
 			);
 			path = LittleLemon;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				285DB29629AA1302008AE79E /* Onboarding.swift in Sources */,
+				285DB29829AA6796008AE79E /* Home.swift in Sources */,
+				285DB29A29AA6865008AE79E /* Menu.swift in Sources */,
 				285DB28829A8D885008AE79E /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
