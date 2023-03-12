@@ -22,14 +22,14 @@ struct UserProfile: View {
             Image("profile-image-placeholder")
                 .resizable()
                 .frame(width: 88, height: 88)
+                .cornerRadius(44)
             
             Text(userFirstName ?? "firstname")
             Text(userLastName ?? "lastname")
             Text(userEmail ?? "email")
             
             Button("Logout") {
-                var isLoggedIn = UserDefaults.standard.bool(forKey: kIsLoggedIn)
-                isLoggedIn.toggle()
+                UserDefaults.standard.set(false, forKey: keyIsLoggedIn)
                 self.presentation.wrappedValue.dismiss()
             }
             .buttonStyle(.bordered)

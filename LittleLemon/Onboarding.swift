@@ -10,7 +10,7 @@ import SwiftUI
 let keyFirstName = "kFirstName"
 let keyLastName = "kLastName"
 let keyEmail = "kEmail"
-let kIsLoggedIn = "kIsLoggedIn"
+let keyIsLoggedIn = "kIsLoggedIn"
 
 struct Onboarding: View {
     @State private var firstName = ""
@@ -27,9 +27,13 @@ struct Onboarding: View {
                 }
                 .navigationTitle("Sign up")
                 
-                TextField("First Name", text: $firstName)
-                TextField("Last Name", text: $lastName)
-                TextField("Email", text: $email)
+                VStack {
+                    TextField("First Name", text: $firstName)
+                    TextField("Last Name", text: $lastName)
+                    TextField("Email", text: $email)
+                }
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled(true)
                 
                 Button("Register") {
                     if !firstName.isEmpty, !lastName.isEmpty, !email.isEmpty {
@@ -38,7 +42,7 @@ struct Onboarding: View {
                             UserDefaults.standard.set(firstName, forKey: keyFirstName)
                             UserDefaults.standard.set(lastName, forKey: keyLastName)
                             UserDefaults.standard.set(email, forKey: keyEmail)
-                            UserDefaults.standard.set(isLoggedIn, forKey: kIsLoggedIn)
+                            UserDefaults.standard.set(true, forKey: keyIsLoggedIn)
                             isLoggedIn = true
                         } else {
                             print("Invalid Email")
@@ -52,7 +56,7 @@ struct Onboarding: View {
             .textFieldStyle(.roundedBorder)
             .padding()
             .onAppear {
-                if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
+                if UserDefaults.standard.bool(forKey: keyIsLoggedIn) {
                     isLoggedIn = true
                 }
             }
