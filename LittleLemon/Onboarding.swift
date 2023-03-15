@@ -24,32 +24,7 @@ struct Onboarding: View {
     var body: some View {
         NavigationView {
             VStack {
-                ZStack {
-
-                    VStack(alignment: .leading) {
-                        Text("Little Lemon")
-                            .font(Font.custom("MarkaziText", size: 32, relativeTo: .title))
-                            .bold()
-                            .foregroundColor(Color("Yellow"))
-                        
-                        Text("Chicago")
-                            .font(.subheadline)
-                        
-                        HStack(spacing: 20) {
-                            Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
-                                .font(.subheadline)
-                            
-                            Image("Hero image")
-                                .resizable()
-                                .clipped()
-                                .frame(width: 112, height: 142)
-                                .cornerRadius(16)
-                        }
-                    }
-                    .foregroundColor(Color("Secondary-white"))
-                }
-                .background(Color("Green"))
-                .padding([.top])
+                HeroView()
                 
                 ScrollView {
                     VStack {
