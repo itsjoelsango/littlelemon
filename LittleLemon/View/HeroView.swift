@@ -19,10 +19,10 @@ struct HeroView: View {
                     .font(Font.custom("MarkaziText", size: 24, relativeTo: .subheadline))
                     .foregroundColor(Color("Secondary-white"))
                 
-                HStack(spacing: 20) {
+                HStack {
                     Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
                         .foregroundColor(Color("Secondary-white"))
-                        .font(Font.custom("Karla", size: 18, relativeTo: .subheadline))
+                        .font(Font.custom("Karla", size: 16, relativeTo: .subheadline))
                         .lineLimit(6)
                     Spacer()
                     Image("Hero image")

@@ -26,35 +26,21 @@ struct Menu: View {
                     .textFieldStyle(.roundedBorder)
                     .background(Color("Green"))
                     
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 5) {
                         Text("ORDER FOR DELIVERY!")
                             .bold()
                         HStack {
-                            Button {
-                                // code here
-                            } label: {
-                                Text("Started")
-                            }
-                            
-                            Button {
-                                // code here
-                            } label: {
-                                Text("Mains")
-                            }
-                            
-                            Button {
-                                // code here
-                            } label: {
-                                Text("Desserts")
-                            }
-                            
-                            Button {
-                                // code here
-                            } label: {
-                                Text("Sides")
-                            }
-                        }.buttonStyle(.bordered)
+                            ButtomView(buttomTitle: "Started")
+                            ButtomView(buttomTitle: "Mains")
+                            ButtomView(buttomTitle: "Desserts")
+                            ButtomView(buttomTitle: "Drinks")
+                        }
+                        .buttonStyle(.bordered)
+                        .foregroundColor(Color("Green"))
+                        .bold()
                     }
+                    .padding([.top])
+                    .padding([.bottom], 5)
 
                 }
                 
@@ -123,7 +109,8 @@ struct Menu: View {
                         newDish.category = item.category
                         newDish.id = item.id
                     }
-                    try? viewContext.save()
+//                    try? viewContext.save()
+                    Dish.saveDatabase(viewContext)
                 }
                 catch let error {
                     print(error.localizedDescription)
@@ -144,6 +131,18 @@ struct Menu: View {
     
     func buildPredicate() -> NSPredicate {
         return searchText.isEmpty ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+    }
+}
+
+struct ButtomView: View {
+    var buttomTitle: String
+    
+    var body: some View {
+        Button {
+            // code here
+        } label: {
+            Text(buttomTitle)
+        }.background(Color("Secondary-white"))
     }
 }
 
