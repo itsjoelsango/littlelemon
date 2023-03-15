@@ -13,45 +13,94 @@ struct Menu: View {
     @State private var searchText = ""
     
     var body: some View {
-        VStack(spacing: 10) {
-            Text("Little Lemon")
-                .font(.title)
-            
-            Text("Chicago")
-            
-            Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
-            
-            VStack {
-                TextField("Search menu", text: $searchText)
-                    .autocorrectionDisabled(true)
-            }
-            .padding([.leading, .trailing], 20)
-            .textFieldStyle(.roundedBorder)
-            
-            FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (dishes: [Dish]) in
-                List {
-                    ForEach(dishes) { dish in
-                        
+        NavigationView {
+            VStack(spacing: 0) {
+                Group {
+                    HeroView()
+                    VStack {
+                        TextField("Search menu", text: $searchText)
+                            .autocorrectionDisabled(true)
+                    }
+                    .padding([.leading, .trailing], 20)
+                    .padding(.bottom, 10)
+                    .textFieldStyle(.roundedBorder)
+                    .background(Color("Green"))
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("ORDER FOR DELIVERY!")
+                            .bold()
                         HStack {
-                            Text("\(dish.title!) \(dish.price!)")
-
-                            Spacer()
-                            
-                            AsyncImage(url: URL(string: dish.image!)) { image in
-                                image.resizable()
-                                    .cornerRadius(16)
-                            } placeholder: {
-                                ProgressView()
+                            Button {
+                                // code here
+                            } label: {
+                                Text("Started")
                             }
-                            .frame(width: 50, height: 50)
+                            
+                            Button {
+                                // code here
+                            } label: {
+                                Text("Mains")
+                            }
+                            
+                            Button {
+                                // code here
+                            } label: {
+                                Text("Desserts")
+                            }
+                            
+                            Button {
+                                // code here
+                            } label: {
+                                Text("Sides")
+                            }
+                        }.buttonStyle(.bordered)
+                    }
+
+                }
+                
+                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (dishes: [Dish]) in
+                    List {
+                        ForEach(dishes) { dish in
+                            
+                            HStack {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("\(dish.title!)")
+                                        .bold()
+                                    
+                                    Text(dish.dishDescription ?? "")
+                                        .foregroundColor(Color("Green"))
+                                        .lineLimit(2)
+                                    
+                                    Text("$\(dish.price!)")
+                                        .foregroundColor(Color("Green"))
+                                }
+
+                                Spacer()
+                                
+                                AsyncImage(url: URL(string: dish.image!)) { image in
+                                    image.resizable()
+                                        .cornerRadius(16)
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .frame(width: 88, height: 88)
+                            }
                         }
                     }
+                    .listStyle(.plain)
+                }
+                
+            }
+            .onAppear() {
+                getMenuData()
+            }
+            .navigationTitle("little lemon")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("Logo")
                 }
             }
-            
-        }
-        .onAppear() {
-            getMenuData()
         }
     }
     
@@ -71,6 +120,7 @@ struct Menu: View {
                         newDish.image = item.image
                         newDish.price = item.price
                         newDish.dishDescription = item.description
+                        newDish.category = item.category
                         newDish.id = item.id
                     }
                     try? viewContext.save()
