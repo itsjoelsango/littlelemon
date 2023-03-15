@@ -28,7 +28,7 @@ struct Onboarding: View {
 
                     VStack(alignment: .leading) {
                         Text("Little Lemon")
-                            .font(.title)
+                            .font(Font.custom("MarkaziText", size: 32, relativeTo: .title))
                             .bold()
                             .foregroundColor(Color("Yellow"))
                         
@@ -46,9 +46,10 @@ struct Onboarding: View {
                                 .cornerRadius(16)
                         }
                     }
-                    .padding(20)
+                    .foregroundColor(Color("Secondary-white"))
                 }
                 .background(Color("Green"))
+                .padding([.top])
                 
                 ScrollView {
                     VStack {
@@ -65,27 +66,28 @@ struct Onboarding: View {
                         
                         VStack(spacing: 20) {
                             VStack(alignment:.leading) {
-                                Text("First Name *")
+                                Text("First name*")
                                     .font(.subheadline)
-                                    .foregroundColor(.red)
                                 
-                                TextField("Your first name", text: $firstName)
+                                TextField("Eg. John", text: $firstName)
                             }
                             
                             VStack(alignment:.leading) {
-                                Text("Last Name *")
+                                Text("Last name*")
                                     .font(.subheadline)
-                                    .foregroundColor(.red)
                                 
-                                TextField("Your last Name", text: $lastName)
+                                TextField("Eg. Doe", text: $lastName)
                             }
                             
                             VStack(alignment:.leading) {
-                                Text("Email *")
+                                Text("Email*")
                                     .font(.subheadline)
-                                    .foregroundColor(.red)
                                 
-                                TextField("Email", text: $email)
+                                TextField("Eg. johndoe@llemon.com", text: $email)
+                                    .keyboardType(.emailAddress)
+                                    .textContentType(.emailAddress)
+                                    .disableAutocorrection(true)
+                                    .autocapitalization(.none)
                             }
                         }
                         .textInputAutocapitalization(.never)
@@ -99,9 +101,8 @@ struct Onboarding: View {
                             Text("REGISTER")
                         })
                         .buttonStyle(.bordered)
-                        .padding([.all], 5)
                         .foregroundColor(.white)
-                        .background(Color.blue)
+                        .background(Color("Yellow"))
                         .cornerRadius(10)
                     }
                     .textFieldStyle(.roundedBorder)
