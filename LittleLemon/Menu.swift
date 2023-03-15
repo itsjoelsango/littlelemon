@@ -44,10 +44,10 @@ struct Menu: View {
 
                 }
                 
-                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (dishes: [Dish]) in
-                    List {
-                        ForEach(dishes) { dish in
-                            
+                FetchedObjects(predicate: buildPredicate(),
+                               sortDescriptors: buildSortDescriptor()) { (dishes: [Dish]) in
+                    List(dishes) { dish in
+                        NavigationLink(destination: MenuItemDetailView(dish: dish)){
                             HStack {
                                 VStack(alignment: .leading, spacing: 10) {
                                     Text("\(dish.title!)")
