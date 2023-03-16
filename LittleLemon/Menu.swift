@@ -142,7 +142,7 @@ struct ButtomView: View {
             // code here
         } label: {
             Text(buttomTitle)
-        }.background(Color("Secondary-white"))
+        }.background(Color("Secondary-dark-whiter"))
     }
 }
 

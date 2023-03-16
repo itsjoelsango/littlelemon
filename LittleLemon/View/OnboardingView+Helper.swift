@@ -37,8 +37,8 @@ struct OnboardingView: View {
     var background: some View {
         LinearGradient(
             gradient: Gradient (stops: [
-            .init (color: Color("Secondary-white"), location: 0),
-                .init (color: Color("Secondary-white"), location: 1)]),
+            .init (color: Color("Secondary-dark-whiter"), location: 0),
+                .init (color: Color("Secondary-dark-whiter"), location: 1)]),
                        startPoint: UnitPoint(x: 0.5000000291053439, y: 1.0838161507153998-8),
                        endPoint: UnitPoint(x: -0.002089660354856915, y: 0.976613295904758))
         .ignoresSafeArea()
