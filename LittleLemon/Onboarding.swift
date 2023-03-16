@@ -21,6 +21,9 @@ struct Onboarding: View {
     @State private var showFormInvalidMessage = false
     @State private var errorMessage = ""
     
+    @AppStorage("shouldShowOnBoarding") var shouldShowOnBoarding = true // to be uncommented after test
+//    @State var shouldShowOnBoarding = true // To be removed, for test purpose only
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -94,6 +97,9 @@ struct Onboarding: View {
                     Text(self.errorMessage)
                 })
             }
+        } // End of NavigationView
+        .fullScreenCover(isPresented: $shouldShowOnBoarding) {
+            OnboardingView(shouldShowOnBoarding: $shouldShowOnBoarding)
         }
     }
     

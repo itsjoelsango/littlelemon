@@ -80,7 +80,7 @@ struct Menu: View {
             .onAppear() {
                 getMenuData()
             }
-            .navigationTitle("little lemon")
+            .navigationTitle("Back")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {

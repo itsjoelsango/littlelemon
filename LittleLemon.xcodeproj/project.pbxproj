@@ -22,6 +22,7 @@
 		28D8E15929C1C2F700E75C41 /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D8E15829C1C2F700E75C41 /* HeroView.swift */; };
 		28D8E15C29C1F76100E75C41 /* Dish+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D8E15B29C1F76100E75C41 /* Dish+extension.swift */; };
 		28D8E16829C225DD00E75C41 /* MenuItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D8E16729C225DD00E75C41 /* MenuItemDetailView.swift */; };
+		28D8E18829C3431000E75C41 /* OnboardingView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D8E18729C3431000E75C41 /* OnboardingView+Helper.swift */; };
 		28F3455F29C13CD700F4AE82 /* Karla in Resources */ = {isa = PBXBuildFile; fileRef = 28F3455E29C13CD700F4AE82 /* Karla */; };
 		28F3456429C1438200F4AE82 /* MarkaziText.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28F3456329C1438200F4AE82 /* MarkaziText.ttf */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		28D8E15829C1C2F700E75C41 /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
 		28D8E15B29C1F76100E75C41 /* Dish+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dish+extension.swift"; sourceTree = "<group>"; };
 		28D8E16729C225DD00E75C41 /* MenuItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailView.swift; sourceTree = "<group>"; };
+		28D8E18729C3431000E75C41 /* OnboardingView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingView+Helper.swift"; sourceTree = "<group>"; };
 		28F3455E29C13CD700F4AE82 /* Karla */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Karla; sourceTree = "<group>"; };
 		28F3456329C1438200F4AE82 /* MarkaziText.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MarkaziText.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 			children = (
 				28D8E15829C1C2F700E75C41 /* HeroView.swift */,
 				28D8E16729C225DD00E75C41 /* MenuItemDetailView.swift */,
+				28D8E18729C3431000E75C41 /* OnboardingView+Helper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28D8E18829C3431000E75C41 /* OnboardingView+Helper.swift in Sources */,
 				285DB29629AA1302008AE79E /* Onboarding.swift in Sources */,
 				285DB29829AA6796008AE79E /* Home.swift in Sources */,
 				2876828029B5C1EC00F7D3BD /* MenuList.swift in Sources */,
