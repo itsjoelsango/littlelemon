@@ -13,45 +13,80 @@ struct Menu: View {
     @State private var searchText = ""
     
     var body: some View {
-        VStack(spacing: 10) {
-            Text("Little Lemon")
-                .font(.title)
-            
-            Text("Chicago")
-            
-            Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
-            
-            VStack {
-                TextField("Search menu", text: $searchText)
-                    .autocorrectionDisabled(true)
-            }
-            .padding([.leading, .trailing], 20)
-            .textFieldStyle(.roundedBorder)
-            
-            FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (dishes: [Dish]) in
-                List {
-                    ForEach(dishes) { dish in
-                        
+        NavigationView {
+            VStack(spacing: 0) {
+                Group {
+                    HeroView()
+                    VStack {
+                        TextField("Search menu", text: $searchText)
+                            .autocorrectionDisabled(true)
+                    }
+                    .padding([.leading, .trailing], 20)
+                    .padding(.bottom, 10)
+                    .textFieldStyle(.roundedBorder)
+                    .background(Color("Green"))
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("ORDER FOR DELIVERY!")
+                            .bold()
                         HStack {
-                            Text("\(dish.title!) \(dish.price!)")
+                            ButtomView(buttomTitle: "Started")
+                            ButtomView(buttomTitle: "Mains")
+                            ButtomView(buttomTitle: "Desserts")
+                            ButtomView(buttomTitle: "Drinks")
+                        }
+                        .buttonStyle(.bordered)
+                        .foregroundColor(Color("Green"))
+                        .bold()
+                    }
+                    .padding([.top])
+                    .padding([.bottom], 5)
 
-                            Spacer()
-                            
-                            AsyncImage(url: URL(string: dish.image!)) { image in
-                                image.resizable()
-                                    .cornerRadius(16)
-                            } placeholder: {
-                                ProgressView()
+                }
+                
+                FetchedObjects(predicate: buildPredicate(),
+                               sortDescriptors: buildSortDescriptor()) { (dishes: [Dish]) in
+                    List(dishes) { dish in
+                        NavigationLink(destination: MenuItemDetailView(dish: dish)){
+                            HStack {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("\(dish.title!)")
+                                        .bold()
+                                    
+                                    Text(dish.dishDescription ?? "")
+                                        .foregroundColor(Color("Green"))
+                                        .lineLimit(2)
+                                    
+                                    Text("$\(dish.price!)")
+                                        .foregroundColor(Color("Green"))
+                                }
+
+                                Spacer()
+                                
+                                AsyncImage(url: URL(string: dish.image!)) { image in
+                                    image.resizable()
+                                        .cornerRadius(16)
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .frame(width: 88, height: 88)
                             }
-                            .frame(width: 50, height: 50)
                         }
                     }
+                    .listStyle(.plain)
+                }
+                
+            }
+            .onAppear() {
+                getMenuData()
+            }
+            .navigationTitle("Back")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("Logo")
                 }
             }
-            
-        }
-        .onAppear() {
-            getMenuData()
         }
     }
     
@@ -71,9 +106,11 @@ struct Menu: View {
                         newDish.image = item.image
                         newDish.price = item.price
                         newDish.dishDescription = item.description
+                        newDish.category = item.category
                         newDish.id = item.id
                     }
-                    try? viewContext.save()
+//                    try? viewContext.save()
+                    Dish.saveDatabase(viewContext)
                 }
                 catch let error {
                     print(error.localizedDescription)
@@ -94,6 +131,18 @@ struct Menu: View {
     
     func buildPredicate() -> NSPredicate {
         return searchText.isEmpty ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+    }
+}
+
+struct ButtomView: View {
+    var buttomTitle: String
+    
+    var body: some View {
+        Button {
+            // code here
+        } label: {
+            Text(buttomTitle)
+        }.background(Color("Secondary-white"))
     }
 }
 
