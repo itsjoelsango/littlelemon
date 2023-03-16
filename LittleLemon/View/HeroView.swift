@@ -17,11 +17,11 @@ struct HeroView: View {
                 
                 Text("Chicago")
                     .font(Font.custom("MarkaziText", size: 24, relativeTo: .subheadline))
-                    .foregroundColor(Color("Secondary-white"))
+                    .foregroundColor(Color("Secondary-dark-whiter"))
                 
                 HStack {
                     Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
-                        .foregroundColor(Color("Secondary-white"))
+                        .foregroundColor(Color("Secondary-dark-whiter"))
                         .font(Font.custom("Karla", size: 16, relativeTo: .subheadline))
                         .lineLimit(6)
                     Spacer()
@@ -32,7 +32,7 @@ struct HeroView: View {
                         .cornerRadius(16)
                 }
             }
-            .foregroundColor(Color("Secondary-white"))
+            .foregroundColor(Color("Secondary-dark-whiter"))
             .padding([.leading, .trailing, .bottom], 20)
         }
         .background(Color("Green"))

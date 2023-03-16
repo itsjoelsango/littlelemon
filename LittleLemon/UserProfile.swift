@@ -128,7 +128,7 @@ struct UserProfile: View {
                             // Save Changes functionality here!
                         } label: {
                             Text("Save changes")
-                                .foregroundColor(Color("Secondary-white"))
+                                .foregroundColor(Color("Secondary-dark-whiter"))
                                 .bold()
                                 .padding(16)
                                 .background(Color("Green"))
