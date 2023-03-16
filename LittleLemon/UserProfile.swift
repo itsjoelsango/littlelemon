@@ -95,39 +95,49 @@ struct UserProfile: View {
                     EmailNotificationView()
                 }
                 
-                Button("Log out") {
-                    UserDefaults.standard.set(false, forKey: keyIsLoggedIn)
-                    self.presentation.wrappedValue.dismiss()
-                }
-                .buttonStyle(.bordered)
-                .foregroundColor(Color.black)
-                .background(Color("Yellow"))
-                
-                HStack(spacing: 20) {
-                    Spacer()
+                VStack(alignment: .center) {
                     Button {
-                        //
+                        UserDefaults.standard.set(false, forKey: keyIsLoggedIn)
+                        self.presentation.wrappedValue.dismiss()
                     } label: {
-                        Text("Discard changes")
-                            .font(.subheadline)
+                        Text("Log out")
                             .bold()
+                            .foregroundColor(Color.white)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding([.top, .bottom], 16)
+                            .background(Color("Yellow"))
+                            .cornerRadius(6)
                     }
-                    .border(.gray)
-                    .foregroundColor(.gray)
-                    .background(.white)
+
                     
-                    Button {
-                        //
-                    } label: {
-                        Text("Save changes")
+                    HStack(spacing: 20) {
+                        Button {
+                            // Discard changes functionality here!
+                        } label: {
+                            Text("Discard changes")
+                                .font(.subheadline)
+                                .bold()
+                                .padding(16)
+                                .foregroundColor(.gray)
+                                .border(Color("Green"))
+                                
+                        }
+                        
+
+                        Button {
+                            // Save Changes functionality here!
+                        } label: {
+                            Text("Save changes")
+                                .foregroundColor(Color("Secondary-white"))
+                                .bold()
+                                .padding(16)
+                                .background(Color("Green"))
+                                .cornerRadius(10)
+                        }
+
                     }
-                    .foregroundColor(.white)
-                    .background(Color("Green"))
-                    .cornerRadius(10)
                     
-                    Spacer()
                 }
-                .buttonStyle(.bordered)
 
             }
             .textFieldStyle(.roundedBorder)
